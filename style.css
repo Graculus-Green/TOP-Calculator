@@ -1,0 +1,35 @@
+.calc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: sspace-around;
+    width: 300px;
+    min-height: 400px;
+    border-radius: 10px;
+    background-color: indigo;
+    
+}
+.screen{
+    display: flex;
+    justify-content: center;
+    border: 2px solid grey;
+    background-color: lavender;
+    border-radius: 5px;
+    margin: 16px;
+    font-size: 24px;
+
+}
+.btn-container {
+    display: grid;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: space-around;
+    padding: 8px;
+}
+.btn{
+  min-width: 30px;
+  min-height: 10px;
+  padding: 5px;
+  margin: 10px;
+  font-size: 20px;
+}
