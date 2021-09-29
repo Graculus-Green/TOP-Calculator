@@ -9,15 +9,18 @@ function keyInput() {
     key.addEventListener('click', e => {
         let input = e.target.innerHTML;
         console.log(input);
-        if(e.target.id === 'clear'){
-            currentNum = '';
-        }      
-        else if (e.target.id === 'backspace') {
-            currentNum = currentNum.slice(0,currentNum.length-1);
-        }
-        else {
-
-            currentNum = currentNum + input;
+        switch(e.target.id) {
+            case 'clear':
+                currentNum = '';
+                break;    
+            case 'backspace':
+                currentNum = currentNum.slice(0,currentNum.length-1);
+                break;
+            case "point":
+                currentNum.includes(".") ? (currentNum = currentNum):(currentNum = currentNum + input);
+                break;
+            default:
+                currentNum = currentNum + input;
         }
         return document.querySelector('.screen').innerHTML = currentNum;
     });
