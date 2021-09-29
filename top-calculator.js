@@ -21,6 +21,10 @@ let operate = (operator, a, b) => {
     };
 };
 
+function removeTransition(e){
+    if(e.propertyName !== 'transform') return;
+  };
+
 /*
 module.exports = {
     add,
