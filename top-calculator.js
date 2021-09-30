@@ -62,7 +62,7 @@ let divide = (a,b) => {
     if (b === 0) {
         return "Not like that"
     }
-    return Math.round((a/b)*100)/100;
+    return Math.round((a/b)*1000000000)/1000000000;
 };
 
 let operate = (a, operator, b) => {
