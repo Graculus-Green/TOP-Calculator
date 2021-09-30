@@ -103,11 +103,14 @@
     
 
 }
-.btn:hover, #ans:hover, #operator:hover {
+#clear, #backspace, #sign {
+    background-color: blueviolet;
+}
+.btn:hover, #ans:hover, #operator:hover,#clear:hover, #backspace:hover, #sign:hover {
     background-color: yellow;
     color: black;
 }
-.btn:active,#ans:active, #operator:active  {
+.btn:active,#ans:active, #operator:active,#clear:active, #backspace:active, #sign:active  {
     background-color: #3e8e41;
     color: black;
     transform: translateY(2px);
