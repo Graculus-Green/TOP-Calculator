@@ -1,7 +1,8 @@
 //let keyName = e.target.name;
 let keys = document.querySelectorAll('.btn');
-let currentNum = '';
-
+let displayNum = '';
+let storedNum = '';
+let displayOp = '';
 
 function keyInput() {
  
@@ -11,18 +12,39 @@ function keyInput() {
         console.log(input);
         switch(e.target.id) {
             case 'clear':
-                currentNum = '';
+                displayNum = '',storedNum = '',displayOp = '';
                 break;    
             case 'backspace':
-                currentNum = currentNum.slice(0,currentNum.length-1);
+                displayNum = displayNum.slice(0,displayNum.length-1);
+                break;
+            case 'sign':
+                displayNum.includes('-') ? displayNum = displayNum.slice(1):displayNum = '-' + displayNum;
                 break;
             case "point":
-                currentNum.includes(".") ? (currentNum = currentNum):(currentNum = currentNum + input);
+                displayNum.includes(".") ? (displayNum = displayNum):(displayNum = displayNum + input);
+                break;
+            case 'operator':
+                if (storedNum === '') {
+                    storedNum = displayNum;
+                    displayOp = input;
+                    displayNum = '';
+                }
+                else {
+                    storedNum = operate(Number(storedNum), displayOp, Number(displayNum)).toString();
+                    displayNum= '', displayOp = input;
+                }
+                break
+            case 'ans':
+                displayNum = operate(Number(storedNum), displayOp, Number(displayNum)).toString();
+                storedNum= '', displayOp = '';
                 break;
             default:
-                currentNum = currentNum + input;
+                displayNum.includes("Not like that") ? displayNum = input: displayNum = displayNum + input;
         }
-        return document.querySelector('.screen').innerHTML = currentNum;
+        document.querySelector('.storednum').innerHTML = storedNum;
+        document.querySelector('.displayop').innerHTML = displayOp;
+
+        document.querySelector('.displaynum').innerHTML = displayNum;
     });
  });
 };
@@ -38,20 +60,20 @@ let subtract =(a,b) => a-b;
 let multiply = (a,b) => a*b;
 let divide = (a,b) => {
     if (b === 0) {
-        return "Great, now the Cosmos has imploded..."
+        return "Not like that"
     }
     return Math.round((a/b)*100)/100;
 };
 
-let operate = (operator, a, b) => {
+let operate = (a, operator, b) => {
     switch(operator){
         case "+":
             return add(a,b);
         case "-":
             return subtract(a,b);
-        case "*":
+        case "×":
             return multiply(a,b);
-        case "/":
+        case "÷":
             return divide(a,b);
     };
 };
